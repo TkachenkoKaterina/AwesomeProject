@@ -14,7 +14,7 @@ export const ButtonCustom = ({ text, style, onPress }) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: 343,
+    width: '100%',
     paddingVertical: 16,
     paddingHorizontal: 32,
     alignItems: "center",
