@@ -20,7 +20,6 @@ import { useNavigation } from '@react-navigation/native';
 
 const RegistrationScreen = () => {
   const navigation = useNavigation();
-  console.log(navigation);
 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [form, setForm] = useState({
