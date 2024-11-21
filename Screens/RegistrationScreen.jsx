@@ -16,8 +16,12 @@ import {
 import { ButtonCustom } from '../components/ButtonCustom';
 import PlusIcon from '../assets/icons/PlusIcon.svg';
 import CloseIcon from '../assets/icons/CloseIcon.svg';
+import { useNavigation } from '@react-navigation/native';
 
 const RegistrationScreen = () => {
+  const navigation = useNavigation();
+  console.log(navigation);
+
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [form, setForm] = useState({
     login: '',
@@ -46,6 +50,7 @@ const RegistrationScreen = () => {
       });
       setFocusedField(null);
       setAvatar(null);
+      navigation.navigate('BottomTabNavigator');
     } else {
       Alert.alert('Будь ласка, заповніть всі поля');
     }
@@ -146,7 +151,10 @@ const RegistrationScreen = () => {
             />
           </View>
 
-          <TouchableOpacity style={styles.loginContainer}>
+          <TouchableOpacity
+            style={styles.loginContainer}
+            onPress={() => navigation.navigate('LoginScreen')}
+          >
             <Text style={styles.loginText}>Вже є аккаунт? Увійти</Text>
           </TouchableOpacity>
         </KeyboardAvoidingView>
@@ -159,6 +167,7 @@ export default RegistrationScreen;
 
 const styles = StyleSheet.create({
   background: {
+    height: '100%',
     width: '100%',
     flex: 1,
     resizeMode: 'cover',
@@ -169,7 +178,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     width: '100%',
     paddingTop: 92,
-    paddingBottom: 45,
     backgroundColor: '#FFF',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -256,6 +264,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginText: {
+    paddingBottom: 45,
     color: '#1B4371',
     textAlign: 'center',
     fontFamily: 'Roboto-Regular',
