@@ -35,16 +35,14 @@ const styles = StyleSheet.create({
     color: '#212121',
     fontFamily: 'Roboto-Bold',
     fontSize: 13,
-    fontStyle: 'normal',
     fontWeight: '700',
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
   emailText: {
     color: 'rgba(33, 33, 33, 0.8)',
     fontFamily: 'Roboto-Regular',
     fontSize: 11,
-    fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
 });

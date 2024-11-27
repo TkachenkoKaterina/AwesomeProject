@@ -1,49 +1,82 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-import LoadImg from '../components/LoadImg';
-import InputForCreatePost from '../components/InputForCreatePost';
-import { ButtonCustom } from '../components/ButtonCustom';
+import React, { useEffect, useState } from 'react';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
+import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
 
+import InputForCreatePost from '../components/InputForCreatePost';
+import { ButtonCustom } from '../components/ButtonCustom';
+import CameraFrame from '../components/CameraFrame';
+
 const CreatePostsScreen = () => {
-  const [title, setTitle] = useState('');
+  const [preview, setPreview] = useState(null);
+  const [name, setName] = useState('');
+  const [place, setPlace] = useState('');
   const [location, setLocation] = useState('');
-  const [image, setImage] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const navigation = useNavigation();
-  const isButtonActive = title && location && image;
+  const isButtonActive = name && place && preview;
 
-  const handlePublish = () => {
+  const handlePublish = async () => {
     if (isButtonActive) {
-      console.log('Post published!');
+      let locationData = null;
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status === 'granted') {
+          locationData = await Location.getCurrentPositionAsync({});
+        } else {
+          setErrorMsg('Permission to access location was denied');
+        }
+      } catch (error) {
+        console.log('Error fetching location:', error);
+      }
+
+      console.log('Post published with location:', locationData);
       navigation.navigate('Posts');
-      setImage(null);
-      setTitle('');
-      setLocation('');
+      setPreview(null);
+      setName('');
+      setLocation(locationData);
+      setPlace('');
     }
   };
 
   return (
-    <View style={styles.container}>
-      <LoadImg image={image} onImageLoad={setImage} />
-      <InputForCreatePost
-        placeholder="Назва..."
-        value={title}
-        onChangeText={setTitle}
-      />
-      <InputForCreatePost
-        placeholder="Місцевість..."
-        icon="map-pin"
-        value={location}
-        onChangeText={setLocation}
-      />
-      <ButtonCustom
-        text="Опубліковати"
-        onPress={handlePublish}
-        style={isButtonActive ? styles.activeButton : styles.inactiveButton}
-      />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <CameraFrame preview={preview} setPreview={setPreview} />
+        <Text style={styles.text}>
+          {preview ? 'Редагувати фото' : 'Завантажте фото'}
+        </Text>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'height' : 'padding'}
+        >
+          <InputForCreatePost
+            placeholder="Назва..."
+            value={name}
+            onChangeText={(text) => setName(text)}
+          />
+          <InputForCreatePost
+            placeholder="Місцевість..."
+            icon="map-pin"
+            value={place}
+            onChangeText={(text) => setPlace(text)}
+          />
+          <ButtonCustom
+            text="Опубліковати"
+            onPress={handlePublish}
+            style={isButtonActive ? styles.activeButton : styles.inactiveButton}
+          />
+        </KeyboardAvoidingView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -57,10 +90,20 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     gap: 32,
   },
+  text: {
+    marginTop: -24,
+    color: '#BDBDBD',
+    fontFamily: 'Roboto-Regular',
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 20,
+  },
   activeButton: {
+    marginTop: 32,
     backgroundColor: '#FF6C00',
   },
   inactiveButton: {
+    marginTop: 32,
     backgroundColor: '#E0E0E0',
   },
 });

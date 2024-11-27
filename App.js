@@ -1,5 +1,5 @@
 import './gesture-handler';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text } from 'react-native';
 import RegistrationScreen from './Screens/RegistrationScreen';
 import LoginScreen from './Screens/LoginScreen';
 import * as SplashScreen from 'expo-splash-screen';
@@ -22,14 +22,11 @@ export default function App() {
   });
 
   useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
     if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return <ActivityIndicator size="large" />;
-  }
 
   return (
     <NavigationContainer>
@@ -83,7 +80,6 @@ const styles = StyleSheet.create({
               color: '#212121',
               fontFamily: 'Roboto-Medium',
               fontSize: 17,
-              fontStyle: 'normal',
               fontWeight: '500',
               lineHeight: 22,
               letterSpacing: -0.408,

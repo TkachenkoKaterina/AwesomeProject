@@ -37,8 +37,7 @@ const styles = StyleSheet.create({
     color: '#212121',
     fontFamily: 'Roboto-Medium',
     fontSize: 16,
-    fontStyle: 'normal',
     fontWeight: '500',
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
 });

@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Medium',
     fontSize: 30,
     fontWeight: 500,
-    lineHeight: 'normal',
+    lineHeight: 36,
     letterSpacing: 0.01,
   },
 });

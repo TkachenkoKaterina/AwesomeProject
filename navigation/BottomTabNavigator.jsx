@@ -51,7 +51,6 @@ const BottomTabNavigator = () => {
             color: '#212121',
             fontFamily: 'Roboto-Medium',
             fontSize: 17,
-            fontStyle: 'normal',
             fontWeight: '500',
             lineHeight: 22,
             letterSpacing: -0.408,

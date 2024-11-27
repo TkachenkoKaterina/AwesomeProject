@@ -35,7 +35,10 @@ const LoadImg = ({ image, onImageLoad }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onLoadImg} style={styles.imgContainer}>
+      <TouchableOpacity
+        onPress={toggleCameraFacing}
+        style={styles.imgContainer}
+      >
         {image ? (
           <Image source={{ uri: image }} style={styles.img} />
         ) : (
@@ -75,8 +78,7 @@ const styles = StyleSheet.create({
     color: '#BDBDBD',
     fontFamily: 'Roboto-Regular',
     fontSize: 16,
-    fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
 });

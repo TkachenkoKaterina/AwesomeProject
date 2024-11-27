@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Medium',
     fontSize: 30,
     fontWeight: 500,
-    lineHeight: 'normal',
+    lineHeight: 36,
     letterSpacing: 0.01,
   },
   inputContainer: {
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Regular',
     fontSize: 16,
     fontWeight: 400,
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
   inputFocused: {
     backgroundColor: '#FFF',
@@ -189,9 +189,8 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     fontFamily: 'Roboto-Regular',
     fontSize: 16,
-    fontStyle: 'normal',
     fontWeight: 400,
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
   loginContainer: {
     marginTop: 16,
@@ -202,9 +201,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Roboto-Regular',
     fontSize: 16,
-    fontStyle: 'normal',
     fontWeight: 400,
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
   registerText: {
     textDecorationLine: 'underline',

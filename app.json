@@ -1,5 +1,6 @@
 {
   "expo": {
+    "entryPoint": "./App.js",
     "name": "AwesomeProject",
     "slug": "AwesomeProject",
     "version": "1.0.0",
@@ -11,23 +12,52 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "assets/fonts/*"
-    ],
+    "assetBundlePatterns": ["assets/fonts/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.company.Awesomeprojectios",
+      "infoPlist": {
+        "NSCameraUsageDescription": "We need camera access to take photos."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyAn-l8jdfqXMkniuGlfv17A3eoGHHdCbvA"
+      },
+      "newArchEnabled": true
     },
     "android": {
+      "permissions": [
+        "CAMERA",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "CAMERA",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
       "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAn-l8jdfqXMkniuGlfv17A3eoGHHdCbvA"
+        }
+      },
+      "newArchEnabled": true,
+      "package": "com.company.Awesomeprojectios"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ],
       "expo-font"
     ]
   }

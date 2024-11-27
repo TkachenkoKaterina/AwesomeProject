@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     color: '#212121',
     fontFamily: 'Roboto-Regular',
     fontSize: 13,
-    fontStyle: 'normal',
     fontWeight: '400',
     lineHeight: 18,
   },
@@ -115,9 +114,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Regular',
     textAlign: 'right',
     fontSize: 10,
-    fontStyle: 'normal',
     fontWeight: '400',
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
   inputContainer: {
     flexDirection: 'row',

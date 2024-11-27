@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     fontSize: 16,
     fontWeight: 400,
-    lineHeight: 'normal',
+    lineHeight: 20,
   },
 });
